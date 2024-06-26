@@ -1,0 +1,58 @@
+<template>
+    <canvas ref="canvas" class="canvas" width="750" height="750" @mousedown="canvasClicked()"
+        @mouseup="canvasUnclicked()" @mouseleave="canvasUnclicked()" @mousemove="handleMouseMove">
+        Your browser does not support the HTML canvas tag.
+    </canvas>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            canvas: null,
+            context: null,
+            isClicked: false,
+        }
+    },
+    mounted() {
+        const canvas = this.$refs.canvas;
+        if (canvas.getContext) {
+            this.canvas = canvas;
+            this.context = canvas.getContext('2d');
+        } else {
+            console.error('Canvas not supported');
+        }
+    },
+    methods: {
+        canvasClicked() {
+            this.isClicked = true;
+        },
+        canvasUnclicked() {
+            this.isClicked = false;
+        },
+        handleMouseMove(e) {
+            if (this.isClicked) {
+                // Calculate cursor position
+                const rect = this.canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Drawing a circle
+                this.context.beginPath();
+                this.context.arc(x, y, 5, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
+                this.context.fillStyle = 'blue'; // Fill color
+                this.context.fill(); // Fill the circle
+
+            }
+        }
+    }
+};
+</script>
+
+<style scoped>
+.canvas {
+    border: 1px solid black;
+    width: 750px;
+    height: 750px;
+}
+</style>
