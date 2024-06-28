@@ -6,9 +6,12 @@
 </template>
 
 <script>
+import { useAppStore } from '../stores/app.js';
+
 export default {
     data() {
         return {
+            store: useAppStore(),
             canvas: null,
             context: null,
             isClicked: false,
@@ -40,11 +43,16 @@ export default {
                 // Drawing a circle
                 this.context.beginPath();
                 this.context.arc(x, y, 5, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
-                this.context.fillStyle = 'blue'; // Fill color
+                this.context.fillStyle = this.color; // Fill color
                 this.context.fill(); // Fill the circle
 
             }
         }
+    },
+    computed: {
+        color() {
+            return this.store.getSelectedColor();
+        },
     }
 };
 </script>
