@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useAppStore = defineStore('app', {
   state: () => ({
     selectedColor: '#000000',
+    eraseCanvas: false,
   }),
 
   actions: {
@@ -12,11 +13,17 @@ export const useAppStore = defineStore('app', {
     getSelectedColor() {
         return this.selectedColor
     },
+    getEraseCanvas() {
+      return this.eraseCanvas
+  },
 
     //setters
     setSelectedColor(selectedColor) {
         this.selectedColor = selectedColor
     },
+    setEraseCanvas(eraseCanvas) {
+      this.eraseCanvas = eraseCanvas
+  },
 
   }
 })

@@ -47,11 +47,26 @@ export default {
                 this.context.fill(); // Fill the circle
 
             }
+        },
+        erase() {
+            if (this.isErased) {
+                this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.store.setEraseCanvas(false);            
+            }
         }
+    },
+    watch: {
+        isErased: {
+            handler: 'erase',
+            immediate: false,
+        },
     },
     computed: {
         color() {
             return this.store.getSelectedColor();
+        },
+        isErased() {
+            return this.store.getEraseCanvas();
         },
     }
 };
