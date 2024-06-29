@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 w-fit border border-black rounded-md grid grid-cols-2 gap-2">
+    <div class="p-2 w-fit h-fit border border-black rounded-md grid grid-cols-2 gap-2">
         <GameColor v-for="color in colors" :color="color"></GameColor>
     </div>
 </template>
