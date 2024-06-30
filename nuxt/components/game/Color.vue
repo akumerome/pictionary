@@ -1,5 +1,5 @@
 <template>
-        <button @click="selectColor()" class="color w-12 h-12 rounded-full" :class="isSelectedColor()"></button>
+        <button @click="selectColor()" class="color w-8 h-8 rounded-full" :class="isSelectedColor()"></button>
 </template>
 
 <script>
