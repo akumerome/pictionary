@@ -1,8 +1,9 @@
 <template>
     <h1>PICTIONARY</h1>
-    <div class="flex justify-center">
+    <div class="">
         <GameCanvas></GameCanvas>
         <GamePalette></GamePalette>
         <GameEraser></GameEraser>
+        <GameBrush></GameBrush>
     </div>
 </template>

@@ -42,7 +42,7 @@ export default {
 
                 // Drawing a circle
                 this.context.beginPath();
-                this.context.arc(x, y, 5, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
+                this.context.arc(x, y, this.brushThickness, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
                 this.context.fillStyle = this.color; // Fill color
                 this.context.fill(); // Fill the circle
 
@@ -67,6 +67,9 @@ export default {
         },
         isErased() {
             return this.store.getEraseCanvas();
+        },
+        brushThickness() {
+            return (this.store.getBrushThickness() / 2);
         },
     }
 };

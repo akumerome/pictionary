@@ -1,5 +1,5 @@
 <template>
-        <button @click="selectColor()" class="w-12 h-12 rounded-full" :class="[getColor(), isSelectedColor()]"></button>
+        <button @click="selectColor()" class="color w-12 h-12 rounded-full" :class="isSelectedColor()"></button>
 </template>
 
 <script>
@@ -18,9 +18,6 @@ export default {
 
     },
     methods: {
-        getColor() {
-            return `bg-[${this.color}]`
-        },
         isSelectedColor() {
             return this.selectedColor === this.color ? 'border-8' : 'border-2';
         },
@@ -37,5 +34,9 @@ export default {
 </script>
 
 <style scoped>
+
+.color {
+    background-color: v-bind('color');
+}
 
 </style>
