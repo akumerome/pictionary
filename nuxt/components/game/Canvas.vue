@@ -7,6 +7,7 @@
 
 <script>
 import { useAppStore } from '../stores/app.js';
+import { socket } from '@/socket.js';
 
 export default {
     data() {
@@ -40,18 +41,28 @@ export default {
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
-                // Drawing a circle
-                this.context.beginPath();
-                this.context.arc(x, y, this.brushThickness, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
-                this.context.fillStyle = this.color; // Fill color
-                this.context.fill(); // Fill the circle
+                const stroke = {
+                    x: x,
+                    y: y,
+                    thickness: this.brushThickness,
+                    color: this.color
+                }
+
+                socket.emit('canvas-painted', stroke);
 
             }
+        },
+        paint() {
+            // Drawing a circle
+            this.context.beginPath();
+            this.context.arc(x, y, this.brushThickness, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
+            this.context.fillStyle = this.color; // Fill color
+            this.context.fill(); // Fill the circle
         },
         erase() {
             if (this.isErased) {
                 this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                this.store.setEraseCanvas(false);            
+                this.store.setEraseCanvas(false);
             }
         }
     },
