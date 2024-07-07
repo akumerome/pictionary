@@ -1,6 +1,6 @@
 <template>
     <div class="p-2 w-fit h-fit flex gap-1">
-        <GameColor v-for="color in colors" :color="color"></GameColor>
+        <game-color v-for="color in colors" :color="color"></game-color>
     </div>
 </template>
 

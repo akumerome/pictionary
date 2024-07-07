@@ -1,0 +1,33 @@
+:root {
+    --ifm-navbar-background-color: var(--ifm-background-surface-color);
+    --ifm-background-surface-color: var(--ifm-color-content-inverse);
+    --ifm-color-content-inverse: var(--ifm-color-emphasis-0);
+    --ifm-color-emphasis-0: var(--ifm-color-gray-0);
+    --ifm-color-gray-0: var(--ifm-color-white);
+    --ifm-color-white: rgb(153 27 27);
+
+    --ifm-navbar-shadow: var(--ifm-global-shadow-lw);
+    --ifm-global-shadow-lw: 0 1px 2px 0 #0000001a;
+
+    --ifm-navbar-height: 3.75rem;
+
+    --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical)*0.5);
+    --ifm-navbar-padding-horizontal: var(--ifm-spacing-horizontal);
+    --ifm-spacing-vertical: var(--ifm-global-spacing);
+    --ifm-spacing-horizontal: var(--ifm-global-spacing);
+    --ifm-global-spacing: 1rem;
+
+    --ifm-z-index-fixed: 200;
+}
+
+/**FONTS**/
+
+@font-face {
+    font-family: Permanent Marker;
+    src: url('/fonts/Permanent_Marker/PermanentMarker-Regular.ttf');
+}
+
+@font-face {
+    font-family: Baskervville SC;
+    src: url('/fonts/BaskervvilleSC_Regular/BaskervvilleSC-Regular.ttf');
+}

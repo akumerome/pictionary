@@ -1,15 +1,16 @@
 <template>
-    <h1>PICTIONARY</h1>
+    <div class="pt-8">
     <div class="relative">
-        <GameCanvas></GameCanvas>
+        <game-canvas></game-canvas>
         <div class="absolute top-0 w-[515px] h-fit bg-amber-200 p-2 flex flex-col gap-2">
             <div class="flex items-center gap-x-2">
-                <GamePalette></GamePalette>
-                <GameEraser></GameEraser>
+                <game-palette></game-palette>
+                <game-eraser></game-eraser>
             </div>
-            <GameBrush></GameBrush>
+            <game-brush></game-brush>
         </div>
 
     </div>
+</div>
 
 </template>
