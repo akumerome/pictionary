@@ -14,6 +14,11 @@ socket.on("connect", () => {
     console.log("canvas painted socket data received:", data);
     store.setBrushStroke(data);
   });
+
+  socket.on("canvas-erased", (data) => {
+    console.log("canvas erased socket data received:", data);
+    store.setEraseCanvas(data);
+  });
 });
 
 socket.on("disconnect", () => {

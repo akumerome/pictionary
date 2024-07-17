@@ -55,8 +55,8 @@ export default {
         paint() {
             // Drawing a circle
             this.context.beginPath();
-            this.context.arc(x, y, this.brushThickness, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
-            this.context.fillStyle = this.color; // Fill color
+            this.context.arc(this.brush_stroke.x, this.brush_stroke.y, this.brush_stroke.thickness, 0, Math.PI * 2); // (x-coordinate of the center, y-coordinate of the center, radius, startAngle, endAngle)
+            this.context.fillStyle = this.brush_stroke.color; // Fill color
             this.context.fill(); // Fill the circle
         },
         erase() {
@@ -67,6 +67,10 @@ export default {
         }
     },
     watch: {
+        brush_stroke: {
+            handler: 'paint',
+            immediate: false,
+        },
         isErased: {
             handler: 'erase',
             immediate: false,
@@ -75,6 +79,9 @@ export default {
     computed: {
         color() {
             return this.store.getSelectedColor();
+        },
+        brush_stroke() {
+            return this.store.getBrushStroke();
         },
         isErased() {
             return this.store.getEraseCanvas();

@@ -6,6 +6,7 @@ export const useAppStore = defineStore('app', {
     selectedColor: '#000000',
     eraseCanvas: false,
     brushThickness: 10,
+    brushStroke: {}
   }),
 
   actions: {
@@ -20,6 +21,9 @@ export const useAppStore = defineStore('app', {
     getBrushThickness() {
       return this.brushThickness
     },
+    getBrushStroke() {
+      return this.brushStroke
+    },
 
     //setters
     setSelectedColor(selectedColor) {
@@ -30,6 +34,9 @@ export const useAppStore = defineStore('app', {
     },
     setBrushThickness(brushThickness) {
       this.brushThickness = brushThickness
+    },
+    setBrushStroke(brushStroke) {
+      this.brushStroke = brushStroke
     },
 
   }

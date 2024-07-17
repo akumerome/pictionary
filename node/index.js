@@ -21,6 +21,10 @@ io.on('connection', (socket) => {
     io.emit('canvas-painted', data);
   });
 
+  socket.on('canvas-erased', () => {
+    io.emit('canvas-erased', true);
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });

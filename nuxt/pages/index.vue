@@ -9,7 +9,6 @@
             </div>
             <game-brush></game-brush>
         </div>
-
     </div>
 </div>
 

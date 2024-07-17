@@ -12,6 +12,7 @@
 
 <script>
 import { useAppStore } from '../stores/app.js';
+import { socket } from '@/socket.js';
 
 export default {
     data() {
@@ -21,7 +22,8 @@ export default {
     },
     methods: {
         erase() {
-            this.store.setEraseCanvas(true);
+            console.log("AAAAA")
+            socket.emit('canvas-erased');
         },
     },
 };
