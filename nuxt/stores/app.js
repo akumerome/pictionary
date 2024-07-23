@@ -6,14 +6,64 @@ export const useAppStore = defineStore('app', {
     selectedColor: '#000000',
     eraseCanvas: false,
     brushThickness: 10,
-    brushStroke: {}
+    brushStroke: {},
+    messages: [
+      {
+        user: {
+          id: 1,
+          name: "Vincent",
+          color: '#FF0000',
+        },
+        message: 'First message'
+      },
+      {
+        user: {
+          id: 2,
+          name: "Frida",
+          color: '#FF00FF',
+        },
+        message: 'Second message'
+      },
+      {
+        user: {
+          id: 3,
+          name: "Leonardo",
+          color: '#F0F0FF',
+        },
+        message: 'Third message'
+      },
+      {
+        user: {
+          id: 1,
+          name: "Vincent",
+          color: '#FF0000',
+        },
+        message: 'Fourth message'
+      },
+      {
+        user: {
+          id: 4,
+          name: "Rosa",
+          color: '#00FFFF',
+        },
+        message: 'Fifth message'
+      },
+      {
+        user: {
+          id: 3,
+          name: "Leonardo",
+          color: '#F0F0FF',
+        },
+        message: 'Sixth message'
+      },
+    ],
   }),
 
   actions: {
 
     //getters
     getSelectedColor() {
-        return this.selectedColor
+      return this.selectedColor
     },
     getEraseCanvas() {
       return this.eraseCanvas
@@ -24,10 +74,13 @@ export const useAppStore = defineStore('app', {
     getBrushStroke() {
       return this.brushStroke
     },
+    get_messages() {
+      return this.messages
+    },
 
     //setters
     setSelectedColor(selectedColor) {
-        this.selectedColor = selectedColor
+      this.selectedColor = selectedColor
     },
     setEraseCanvas(eraseCanvas) {
       this.eraseCanvas = eraseCanvas
@@ -37,6 +90,9 @@ export const useAppStore = defineStore('app', {
     },
     setBrushStroke(brushStroke) {
       this.brushStroke = brushStroke
+    },
+    set_messages(messages) {
+      this.messages = messages
     },
 
   }

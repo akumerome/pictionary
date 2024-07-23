@@ -25,6 +25,10 @@ io.on('connection', (socket) => {
     io.emit('canvas-erased', true);
   });
 
+  socket.on('answer-submited', (data) => {
+    io.emit('answer-submited', data);
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });

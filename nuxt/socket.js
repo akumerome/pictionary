@@ -19,6 +19,13 @@ socket.on("connect", () => {
     console.log("canvas erased socket data received:", data);
     store.setEraseCanvas(data);
   });
+
+  socket.on("answer-submited", (data) => {
+    console.log("answer submited socket data received:", data);
+    let messages = store.get_messages();
+    messages.push(data);
+    store.set_messages(messages);
+  });
 });
 
 socket.on("disconnect", () => {

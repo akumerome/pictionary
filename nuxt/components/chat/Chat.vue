@@ -13,76 +13,41 @@
 
 <script>
 import { useAppStore } from '../stores/app.js';
+import { socket } from '@/socket.js';
 
 export default {
     data() {
         return {
             store: useAppStore(),
             text: '',
-            messages: [
-                {
-                    user: {
-                        id: 1,
-                        name: "Vincent",
-                        color: '#FF0000',
-                    },
-                    message: 'First message'
-                },
-                {
-                    user: {
-                        id: 2,
-                        name: "Frida",
-                        color: '#FF00FF',
-                    },
-                    message: 'Second message'
-                },
-                {
-                    user: {
-                        id: 3,
-                        name: "Leonardo",
-                        color: '#F0F0FF',
-                    },
-                    message: 'Third message'
-                },
-                {
-                    user: {
-                        id: 1,
-                        name: "Vincent",
-                        color: '#FF0000',
-                    },
-                    message: 'Fourth message'
-                },
-                {
-                    user: {
-                        id: 4,
-                        name: "Rosa",
-                        color: '#00FFFF',
-                    },
-                    message: 'Fifth message'
-                },
-                {
-                    user: {
-                        id: 3,
-                        name: "Leonardo",
-                        color: '#F0F0FF',
-                    },
-                    message: 'Sixth message'
-                },
-            ],
         }
     },
     methods: {
         send() {
             if (this.text.length > 0) {
-                this.messages.push({ user: { id: 1, name: "Vincent", color: '#FF0000' }, message: this.text });
+                socket.emit('answer-submited', { user: { id: 1, name: "Vincent", color: '#FF0000' }, message: this.text });
                 this.text = '';
-
+            }
+        },
+        scroll_to_bottom() {
+            if (this.messages[this.messages.length - 1].user.id === 1) {
                 // nextTick function executes code after some data has changed and the virtual DOM has been updated based on the data change, but before the browser has rendered that change on the page
                 nextTick(() => {
-                    const messages_container = this.$refs.messages;
-                    messages_container.scrollTop = messages_container.scrollHeight;
+                    const messagesContainer = this.$refs.messages;
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
                 });
             }
+        }
+    },
+    watch: {
+        'messages.length': {
+            handler: 'scroll_to_bottom',
+            immediate: false,
+        }
+    },
+    computed: {
+        messages() {
+            return this.store.get_messages();
         },
     }
 };
