@@ -32,6 +32,10 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+  socket.on('error', (error) => {
+    console.error('Socket error:', error);
+  });
 });
 
 const PORT = 8080;

@@ -32,6 +32,6 @@ socket.on("disconnect", () => {
   console.log("Disconnected from the server");
 });
 
-socket.on("connect_error", (err) => {
-  console.log("Connection error:", err);
+socket.on('error', (error) => {
+  console.error('Socket error:', error);
 });
