@@ -26,6 +26,11 @@ socket.on("connect", () => {
     messages.push(data);
     store.set_messages(messages);
   });
+
+  socket.on("get-words-options", (data) => {
+    console.log("get words options socket data received:", data);
+    store.set_words_options(data);
+  });
 });
 
 socket.on("disconnect", () => {

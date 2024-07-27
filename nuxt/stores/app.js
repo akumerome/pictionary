@@ -57,6 +57,10 @@ export const useAppStore = defineStore('app', {
         message: 'Sixth message'
       },
     ],
+    words: {
+      options: [],
+      selected: null,
+    }
   }),
 
   actions: {
@@ -77,6 +81,9 @@ export const useAppStore = defineStore('app', {
     get_messages() {
       return this.messages
     },
+    get_words_options() {
+      return this.words.options
+    },
 
     //setters
     setSelectedColor(selectedColor) {
@@ -93,6 +100,9 @@ export const useAppStore = defineStore('app', {
     },
     set_messages(messages) {
       this.messages = messages
+    },
+    set_words_options(options) {
+      this.words.options = options
     },
 
   }
